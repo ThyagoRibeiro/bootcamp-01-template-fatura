@@ -1,7 +1,6 @@
 package br.com.thyagoribeiro.fatura.consumers;
 
 import br.com.thyagoribeiro.fatura.consumers.contracts.TransacaoIncoming;
-import br.com.thyagoribeiro.fatura.domains.Fatura;
 import br.com.thyagoribeiro.fatura.domains.Transacao;
 import br.com.thyagoribeiro.fatura.repositories.CartaoRepository;
 import br.com.thyagoribeiro.fatura.repositories.FaturaRepository;
