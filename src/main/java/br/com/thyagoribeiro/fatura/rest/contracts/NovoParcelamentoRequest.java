@@ -45,7 +45,7 @@ public class NovoParcelamentoRequest {
     }
 
     public Parcelamento toModel(Fatura fatura) {
-        return new Parcelamento(quantidadeParcelas, valor);
+        return new Parcelamento(fatura, quantidadeParcelas, valor);
     }
 
 }

@@ -2,6 +2,8 @@ package br.com.thyagoribeiro.fatura.handler;
 
 import br.com.thyagoribeiro.fatura.clients.CartoesClient;
 import br.com.thyagoribeiro.fatura.clients.contracts.BuscaCartaoResponse;
+import br.com.thyagoribeiro.fatura.clients.contracts.ParcelamentoRequest;
+import br.com.thyagoribeiro.fatura.clients.contracts.ParcelamentoResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import feign.FeignException;
@@ -21,10 +23,15 @@ public class CartaoClientFallback implements FallbackFactory<CartoesClient> { //
 
             @Override
             public ResponseEntity<BuscaCartaoResponse> buscarCartao(String numeroCartao) { // CDD 1 - Classe BuscaCartaoResponse
-                return retornaHttpStatus();
+                return retornaHttpStatus(BuscaCartaoResponse.class);
             }
 
-            private ResponseEntity retornaHttpStatus() {
+            @Override
+            public ResponseEntity<ParcelamentoResponse> parcelamentoCartao(String numeroCartao, ParcelamentoRequest parcelamentoRequest) {
+                return retornaHttpStatus(ParcelamentoResponse.class);
+            }
+
+            private ResponseEntity retornaHttpStatus(Class clazz) {
                 if(cause instanceof FeignException) { // CDD 1 - branch if
 
                     FeignException feignException = (FeignException) cause;
@@ -34,7 +41,7 @@ public class CartaoClientFallback implements FallbackFactory<CartoesClient> { //
 
                         ObjectMapper objectMapper = new ObjectMapper();
                         try { // CDD 1 - branch try
-                            return ResponseEntity.unprocessableEntity().body(objectMapper.readValue(feignException.contentUTF8(), BuscaCartaoResponse.class));
+                            return ResponseEntity.unprocessableEntity().body(objectMapper.readValue(feignException.contentUTF8(), clazz));
                         } catch (JsonProcessingException e) {
                             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
                         }

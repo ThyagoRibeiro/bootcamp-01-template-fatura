@@ -24,6 +24,9 @@ public class Fatura {
     @OneToMany(mappedBy = "fatura")
     private List<Transacao> transacaoList; // CDD 1 - Classe Transacao
 
+    @OneToOne(mappedBy = "fatura")
+    private Parcelamento parcelamento;
+
     private boolean aberta;
 
     @Deprecated
@@ -67,6 +70,14 @@ public class Fatura {
 
     public void setTransacaoList(List<Transacao> transacaoList) {
         this.transacaoList = transacaoList;
+    }
+
+    public Parcelamento getParcelamento() {
+        return parcelamento;
+    }
+
+    public void setParcelamento(Parcelamento parcelamento) {
+        this.parcelamento = parcelamento;
     }
 
     public boolean isAberta() {
