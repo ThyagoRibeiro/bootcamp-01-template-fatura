@@ -1,6 +1,5 @@
 package br.com.thyagoribeiro.fatura.clients.contracts;
 
-import br.com.thyagoribeiro.fatura.domains.Parcelamento;
 import br.com.thyagoribeiro.fatura.domains.Renegociacao;
 
 import java.math.BigDecimal;

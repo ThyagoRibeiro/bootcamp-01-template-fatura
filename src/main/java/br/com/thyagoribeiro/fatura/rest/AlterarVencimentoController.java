@@ -5,7 +5,10 @@ import br.com.thyagoribeiro.fatura.domains.Vencimento;
 import br.com.thyagoribeiro.fatura.handler.ErroPadronizado;
 import br.com.thyagoribeiro.fatura.rest.contracts.AlterarVencimentoRequest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.persistence.EntityManager;

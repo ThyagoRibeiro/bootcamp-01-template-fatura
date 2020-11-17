@@ -2,10 +2,9 @@ package br.com.thyagoribeiro.fatura.rest;
 
 import br.com.thyagoribeiro.fatura.domains.Cartao;
 import br.com.thyagoribeiro.fatura.domains.Fatura;
-import br.com.thyagoribeiro.fatura.domains.Parcelamento;
+import br.com.thyagoribeiro.fatura.domains.Renegociacao;
 import br.com.thyagoribeiro.fatura.handler.ErroPadronizado;
 import br.com.thyagoribeiro.fatura.rest.contracts.NovaRenegociacaoRequest;
-import br.com.thyagoribeiro.fatura.domains.Renegociacao;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
