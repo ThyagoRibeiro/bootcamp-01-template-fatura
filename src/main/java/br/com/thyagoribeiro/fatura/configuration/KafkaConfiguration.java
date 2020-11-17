@@ -14,6 +14,8 @@ import org.springframework.kafka.support.serializer.JsonDeserializer;
 import java.util.HashMap;
 import java.util.Map;
 
+// CDD Total - 1
+
 @Configuration
 public class KafkaConfiguration {
 
@@ -35,7 +37,7 @@ public class KafkaConfiguration {
     }
 
     @Bean
-    public ConsumerFactory<String, TransacaoIncoming> transactionConsumerFactory() {
+    public ConsumerFactory<String, TransacaoIncoming> transactionConsumerFactory() { // CDD 1 - TransacaoIncoming
         StringDeserializer stringDeserializer = new StringDeserializer();
         JsonDeserializer<TransacaoIncoming> jsonDeserializer = new JsonDeserializer<>(TransacaoIncoming.class, false);
 

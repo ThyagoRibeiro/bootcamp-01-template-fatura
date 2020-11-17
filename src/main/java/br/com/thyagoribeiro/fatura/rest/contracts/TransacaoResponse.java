@@ -3,18 +3,21 @@ package br.com.thyagoribeiro.fatura.rest.contracts;
 import br.com.thyagoribeiro.fatura.domains.Transacao;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
+
+// CDD Total - 1
 
 public class TransacaoResponse {
 
     private String id;
 
-    private String valor;
+    private BigDecimal valor;
 
     @JsonProperty("data_efetivacao")
     private LocalDateTime efetivadaEm;
 
-    public TransacaoResponse(Transacao transacao) {
+    public TransacaoResponse(Transacao transacao) { // CDD 1 - Classe Transacao
         this.id = transacao.getId();
         this.valor = transacao.getValor();
         this.efetivadaEm = transacao.getEfetivadaEm();
@@ -28,11 +31,11 @@ public class TransacaoResponse {
         this.id = id;
     }
 
-    public String getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 

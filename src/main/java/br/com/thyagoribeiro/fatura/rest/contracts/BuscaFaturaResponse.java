@@ -7,6 +7,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+// CDD Total - 4
+
 public class BuscaFaturaResponse {
 
     private String id;
@@ -15,22 +17,22 @@ public class BuscaFaturaResponse {
     private LocalDate dataVencimento;
 
     @JsonProperty("cartao")
-    private CartaoResponse cartaoResponse;
+    private CartaoResponse cartaoResponse; // CDD 1 - Classe CartaoResponse
 
     @JsonProperty("transacoes")
-    private List<TransacaoResponse> transacaoList;
+    private List<TransacaoResponse> transacaoList; // CDD 1 - Classe TransacaoResponse
 
     @Deprecated
     public BuscaFaturaResponse() {
     }
 
-    public BuscaFaturaResponse(Fatura fatura) {
+    public BuscaFaturaResponse(Fatura fatura) { // CDD 1 - Classe Fatura
         this.id = fatura.getId();
         this.dataVencimento = fatura.getDataVencimento();
         this.cartaoResponse = new CartaoResponse(fatura.getCartao());
 
         this.transacaoList = new ArrayList<>();
-        fatura.getTransacaoList().forEach(transacao -> this.transacaoList.add(new TransacaoResponse(transacao)));
+        fatura.getTransacaoList().forEach(transacao -> this.transacaoList.add(new TransacaoResponse(transacao))); // CDD 1 - Funcao de ordem superior
     }
 
     public String getId() {

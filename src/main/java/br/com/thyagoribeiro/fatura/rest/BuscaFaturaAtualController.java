@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+// CDD Total - 3
+
 @RestController
-public class BuscarFaturaController {
+public class BuscaFaturaAtualController {
 
     @Autowired
     private FaturaRepository faturaRepository;
@@ -19,11 +21,11 @@ public class BuscarFaturaController {
     @GetMapping("/api/cartoes/{id_cartao}/fatura_atual")
     public ResponseEntity<?> buscaFatura(@PathVariable("id_cartao") String cartaoId) {
 
-        Fatura fatura = faturaRepository.findByCartaoIdAndAbertaTrue(cartaoId);
-        if(fatura == null)
+        Fatura fatura = faturaRepository.findByCartaoIdAndAbertaTrue(cartaoId); // CDD 1 - Classe Fatura
+        if(fatura == null) // CDD 1 - branch if
             return ResponseEntity.badRequest().body(new ErroPadronizado("Não existem faturas para esse cartão"));
 
-        BuscaFaturaResponse buscaFaturaResponse = new BuscaFaturaResponse(fatura);
+        BuscaFaturaResponse buscaFaturaResponse = new BuscaFaturaResponse(fatura); // CDD 1 - Classe BuscaFaturaResponse
         return ResponseEntity.ok().body(buscaFaturaResponse);
     }
 

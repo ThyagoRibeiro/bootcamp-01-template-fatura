@@ -7,6 +7,7 @@ import br.com.thyagoribeiro.fatura.repositories.CartaoRepository;
 import br.com.thyagoribeiro.fatura.repositories.FaturaRepository;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collections;
@@ -17,7 +18,7 @@ public class TransacaoIncoming {
 
     private String id;
 
-    private String valor;
+    private BigDecimal valor;
 
     @JsonProperty("cartao")
     private CartaoIncoming cartaoIncoming; // CDD 1 - Classe CartaoIncoming
@@ -28,7 +29,7 @@ public class TransacaoIncoming {
     public TransacaoIncoming() {
     }
 
-    public TransacaoIncoming(String id, String valor, CartaoIncoming cartaoIncoming, LocalDateTime efetivadaEm) {
+    public TransacaoIncoming(String id, BigDecimal valor, CartaoIncoming cartaoIncoming, LocalDateTime efetivadaEm) {
         this.id = id;
         this.valor = valor;
         this.cartaoIncoming = cartaoIncoming;
@@ -43,11 +44,11 @@ public class TransacaoIncoming {
         this.id = id;
     }
 
-    public String getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 

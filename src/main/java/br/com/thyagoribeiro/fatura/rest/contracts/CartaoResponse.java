@@ -3,6 +3,8 @@ package br.com.thyagoribeiro.fatura.rest.contracts;
 import br.com.thyagoribeiro.fatura.domains.Cartao;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+// CDD Total - 1
+
 public class CartaoResponse {
 
     private String id;
@@ -16,7 +18,7 @@ public class CartaoResponse {
     public CartaoResponse() {
     }
 
-    public CartaoResponse(Cartao cartao) {
+    public CartaoResponse(Cartao cartao) { // CDD 1 - Classe Cartao
         this.id = cartao.getId();
         this.email = cartao.getEmail();
         this.diaVencimento = cartao.getDiaVencimento();

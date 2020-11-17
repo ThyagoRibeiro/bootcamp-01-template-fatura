@@ -3,8 +3,11 @@ package br.com.thyagoribeiro.fatura.domains;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+
+// CDD Total - 3
 
 @Entity
 public class Fatura {
@@ -16,10 +19,10 @@ public class Fatura {
     private LocalDate dataVencimento;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    private Cartao cartao;
+    private Cartao cartao; // CDD 1 - Classe Cartao
 
     @OneToMany(mappedBy = "fatura")
-    private List<Transacao> transacaoList;
+    private List<Transacao> transacaoList; // CDD 1 - Classe Transacao
 
     private boolean aberta;
 
@@ -72,5 +75,15 @@ public class Fatura {
 
     public void setAberta(boolean aberta) {
         this.aberta = aberta;
+    }
+
+    public BigDecimal calculaLimiteDisponivel(BigDecimal limite) {
+
+        BigDecimal limiteDisponivel = limite;
+        for(Transacao transacao : transacaoList) { // CDD 1 - branch for
+            limiteDisponivel = limiteDisponivel.subtract(transacao.getValor());
+        }
+
+        return limiteDisponivel;
     }
 }

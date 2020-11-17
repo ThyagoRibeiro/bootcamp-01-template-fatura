@@ -3,6 +3,7 @@ package br.com.thyagoribeiro.fatura.domains;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 // CDD Total - 1
@@ -17,7 +18,7 @@ public class Transacao {
 
     private String idLegado;
 
-    private String valor;
+    private BigDecimal valor;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Fatura fatura; // CDD 1 - Classe Fatura
@@ -28,7 +29,7 @@ public class Transacao {
     public Transacao() {
     }
 
-    public Transacao(String idLegado, String valor, Fatura fatura, LocalDateTime efetivadaEm) {
+    public Transacao(String idLegado, BigDecimal valor, Fatura fatura, LocalDateTime efetivadaEm) {
         this.idLegado = idLegado;
         this.valor = valor;
         this.fatura = fatura;
@@ -51,11 +52,11 @@ public class Transacao {
         this.idLegado = idLegado;
     }
 
-    public String getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 
@@ -74,4 +75,5 @@ public class Transacao {
     public void setEfetivadaEm(LocalDateTime efetivadaEm) {
         this.efetivadaEm = efetivadaEm;
     }
+
 }
