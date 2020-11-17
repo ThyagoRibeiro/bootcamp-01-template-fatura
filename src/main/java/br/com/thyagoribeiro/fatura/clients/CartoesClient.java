@@ -1,8 +1,6 @@
 package br.com.thyagoribeiro.fatura.clients;
 
-import br.com.thyagoribeiro.fatura.clients.contracts.BuscaCartaoResponse;
-import br.com.thyagoribeiro.fatura.clients.contracts.ParcelamentoRequest;
-import br.com.thyagoribeiro.fatura.clients.contracts.ParcelamentoResponse;
+import br.com.thyagoribeiro.fatura.clients.contracts.*;
 import br.com.thyagoribeiro.fatura.handler.CartaoClientFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +18,11 @@ public interface CartoesClient {
     public ResponseEntity<BuscaCartaoResponse> buscarCartao(@PathVariable("id") String numeroCartao); // CDD 1 - Classe BuscaCartaoResponse
 
     @PostMapping(value = "/api/cartoes/{id}/parcelas")
-    public ResponseEntity<ParcelamentoResponse> parcelamentoCartao(@PathVariable("id") String numeroCartao, // CDD 1 - Classes ParcelamentoResponse
-                                                                   @RequestBody ParcelamentoRequest parcelamentoRequest); // CDD 1 - Classes ParcelamentoRequest
+    public ResponseEntity<ParcelamentoResponse> parcelamentoCartao(@PathVariable("id") String numeroCartao, // CDD 1 - Classe ParcelamentoResponse
+                                                                   @RequestBody ParcelamentoRequest parcelamentoRequest); // CDD 1 - Classe ParcelamentoRequest
+
+    @PostMapping(value = "/api/cartoes/{id}/renegociacoes")
+    public ResponseEntity<RenegociacaoResponse> renegociacaoCartao(@PathVariable("id") String numeroCartao, // CDD 1 - Classe ParcelamentoResponse
+                                                                   @RequestBody RenegociacaoRequest renegociacaoRequest); // CDD 1 - Classe RenegociacaoRequest
 
 }

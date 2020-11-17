@@ -4,13 +4,13 @@ import java.time.LocalDate;
 
 // CDD Total - 0
 
-public class AvisoResponse {
+public class AvisoCartaoResponse {
 
     private LocalDate validoAte;
 
     private String destino;
 
-    public AvisoResponse(LocalDate validoAte, String destino) {
+    public AvisoCartaoResponse(LocalDate validoAte, String destino) {
         this.validoAte = validoAte;
         this.destino = destino;
     }

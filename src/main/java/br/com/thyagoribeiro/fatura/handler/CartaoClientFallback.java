@@ -1,9 +1,7 @@
 package br.com.thyagoribeiro.fatura.handler;
 
 import br.com.thyagoribeiro.fatura.clients.CartoesClient;
-import br.com.thyagoribeiro.fatura.clients.contracts.BuscaCartaoResponse;
-import br.com.thyagoribeiro.fatura.clients.contracts.ParcelamentoRequest;
-import br.com.thyagoribeiro.fatura.clients.contracts.ParcelamentoResponse;
+import br.com.thyagoribeiro.fatura.clients.contracts.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import feign.FeignException;
@@ -29,6 +27,11 @@ public class CartaoClientFallback implements FallbackFactory<CartoesClient> { //
             @Override
             public ResponseEntity<ParcelamentoResponse> parcelamentoCartao(String numeroCartao, ParcelamentoRequest parcelamentoRequest) {
                 return retornaHttpStatus(ParcelamentoResponse.class);
+            }
+
+            @Override
+            public ResponseEntity<RenegociacaoResponse> renegociacaoCartao(String numeroCartao, RenegociacaoRequest renegociacaoRequest) {
+                return retornaHttpStatus(RenegociacaoResponse.class);
             }
 
             private ResponseEntity retornaHttpStatus(Class clazz) {

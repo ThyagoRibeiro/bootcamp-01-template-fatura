@@ -16,6 +16,8 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
 
+// CDD Total - 7
+
 @Component
 public class ParcelamentoScheduler {
 
@@ -30,7 +32,7 @@ public class ParcelamentoScheduler {
 
     @Scheduled(fixedDelayString = "${scheduler.notifica.parcelamento}")
     @Transactional
-    public void bloqueia() {
+    public void notificaParcelamento() {
 
         List<Parcelamento> parcelamentoList = parcelamentoRepository.findByStatusParcelamentoNull();
 
@@ -39,8 +41,8 @@ public class ParcelamentoScheduler {
 
         for(Parcelamento parcelamento : parcelamentoList) { // CDD 1 - branch for
 
-            ResponseEntity<ParcelamentoResponse> response = cartoesClient.parcelamentoCartao(parcelamento.getFatura().getCartao().getNumeroCartao(), new ParcelamentoRequest(parcelamento)); // CDD 1 - Classe BloqueiaCartaoRequest
-            parcelamento.setStatusParcelamento(StatusParcelamento.getStatus(response.getStatusCode().is2xxSuccessful()));
+            ResponseEntity<ParcelamentoResponse> response = cartoesClient.parcelamentoCartao(parcelamento.getFatura().getCartao().getNumeroCartao(), new ParcelamentoRequest(parcelamento)); // CDD 2 - Classes ParcelamentoResponse e ParcelamentoRequest
+            parcelamento.setStatusParcelamento(StatusParcelamento.getStatus(response.getStatusCode().is2xxSuccessful())); // CDD 1 - Enum StatusParcelamento
         }
 
         parcelamentoRepository.saveAll(parcelamentoList);

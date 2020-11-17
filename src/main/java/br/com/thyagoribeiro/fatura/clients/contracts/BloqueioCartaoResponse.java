@@ -2,7 +2,7 @@ package br.com.thyagoribeiro.fatura.clients.contracts;
 
 import java.time.LocalDateTime;
 
-public class BloqueioResponse {
+public class BloqueioCartaoResponse {
 
     private String id;
 
@@ -12,7 +12,7 @@ public class BloqueioResponse {
 
     private boolean ativo;
 
-    public BloqueioResponse(String id, LocalDateTime bloqueadoEm, String sistemaResponsavel, boolean ativo) {
+    public BloqueioCartaoResponse(String id, LocalDateTime bloqueadoEm, String sistemaResponsavel, boolean ativo) {
         this.id = id;
         this.bloqueadoEm = bloqueadoEm;
         this.sistemaResponsavel = sistemaResponsavel;

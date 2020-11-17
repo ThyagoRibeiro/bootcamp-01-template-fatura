@@ -78,6 +78,11 @@ public class Renegociacao {
         this.inicioPagamento = inicioPagamento;
     }
 
+    public StatusRenegociacao getStatusRenegociacao() {
+        return statusRenegociacao;
+    }
 
-
+    public void setStatusRenegociacao(StatusRenegociacao statusRenegociacao) {
+        this.statusRenegociacao = statusRenegociacao;
+    }
 }

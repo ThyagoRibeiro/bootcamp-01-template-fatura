@@ -18,13 +18,13 @@ public class BuscaCartaoResponse {
     private String titular;
 
     @JsonProperty("bloqueios")
-    private List<BloqueioResponse> bloqueioResponseList; // CDD 1 - Classe BloqueioResponse
+    private List<BloqueioCartaoResponse> bloqueioResponseList; // CDD 1 - Classe BloqueioCartaoResponse
 
     @JsonProperty("avisos")
-    private List<AvisoResponse> avisoResponseList; // CDD 1 - Classe AvisoResponse
+    private List<AvisoCartaoResponse> avisoResponseList; // CDD 1 - Classe AvisoCartaoResponse
 
     @JsonProperty("carteiras")
-    private List<CarteiraResponse> carteiraResponseList; // CDD 1 - Classe CarteiraResponse
+    private List<CarteiraCartaoResponse> carteiraResponseList; // CDD 1 - Classe CarteiraCartaoResponse
 
     @JsonProperty("parcelas")
     private List<ParcelaResponse> parcelaResponseList; // CDD 1 - Classe ParcelaResponse
@@ -32,14 +32,14 @@ public class BuscaCartaoResponse {
     private BigDecimal limite;
 
     @JsonProperty("renegociacao")
-    private RenegociacaoResponse renegociacaoResponse; // CDD 1 - Classe RenegociacaoResponse
+    private RenegociacaoCartaoResponse renegociacaoResponse; // CDD 1 - Classe RenegociacaoCartaoResponse
 
     @JsonProperty("vencimento")
     private VencimentoResponse vencimentoResponse; // CDD 1 - Classe VencimentoResponse
 
     private String idProposta;
 
-    public BuscaCartaoResponse(String id, LocalDateTime dataEmissao, String titular, List<BloqueioResponse> bloqueioCartaoResponseList, List<AvisoResponse> avisoCartaoResponseList, List<CarteiraResponse> carteiraCartaoResponseList, List<ParcelaResponse> parcelaCartaoResponseList, BigDecimal limite, RenegociacaoResponse renegociacaoCartaoResponse, VencimentoResponse vencimentoCartaoResponse, String idProposta) {
+    public BuscaCartaoResponse(String id, LocalDateTime dataEmissao, String titular, List<BloqueioCartaoResponse> bloqueioCartaoResponseList, List<AvisoCartaoResponse> avisoCartaoResponseList, List<CarteiraCartaoResponse> carteiraCartaoResponseList, List<ParcelaResponse> parcelaCartaoResponseList, BigDecimal limite, RenegociacaoCartaoResponse renegociacaoCartaoResponse, VencimentoResponse vencimentoCartaoResponse, String idProposta) {
         this.id = id;
         this.dataEmissao = dataEmissao;
         this.titular = titular;
@@ -77,27 +77,27 @@ public class BuscaCartaoResponse {
         this.titular = titular;
     }
 
-    public List<BloqueioResponse> getBloqueioResponseList() {
+    public List<BloqueioCartaoResponse> getBloqueioResponseList() {
         return bloqueioResponseList;
     }
 
-    public void setBloqueioResponseList(List<BloqueioResponse> bloqueioResponseList) {
+    public void setBloqueioResponseList(List<BloqueioCartaoResponse> bloqueioResponseList) {
         this.bloqueioResponseList = bloqueioResponseList;
     }
 
-    public List<AvisoResponse> getAvisoResponseList() {
+    public List<AvisoCartaoResponse> getAvisoResponseList() {
         return avisoResponseList;
     }
 
-    public void setAvisoResponseList(List<AvisoResponse> avisoResponseList) {
+    public void setAvisoResponseList(List<AvisoCartaoResponse> avisoResponseList) {
         this.avisoResponseList = avisoResponseList;
     }
 
-    public List<CarteiraResponse> getCarteiraResponseList() {
+    public List<CarteiraCartaoResponse> getCarteiraResponseList() {
         return carteiraResponseList;
     }
 
-    public void setCarteiraResponseList(List<CarteiraResponse> carteiraResponseList) {
+    public void setCarteiraResponseList(List<CarteiraCartaoResponse> carteiraResponseList) {
         this.carteiraResponseList = carteiraResponseList;
     }
 
@@ -117,11 +117,11 @@ public class BuscaCartaoResponse {
         this.limite = limite;
     }
 
-    public RenegociacaoResponse getRenegociacaoResponse() {
+    public RenegociacaoCartaoResponse getRenegociacaoResponse() {
         return renegociacaoResponse;
     }
 
-    public void setRenegociacaoResponse(RenegociacaoResponse renegociacaoResponse) {
+    public void setRenegociacaoResponse(RenegociacaoCartaoResponse renegociacaoResponse) {
         this.renegociacaoResponse = renegociacaoResponse;
     }
 
