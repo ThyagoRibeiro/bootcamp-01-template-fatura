@@ -27,6 +27,9 @@ public class Fatura {
     @OneToOne(mappedBy = "fatura")
     private Parcelamento parcelamento;
 
+    @OneToOne(mappedBy = "fatura")
+    private Renegociacao renegociacao;
+
     private boolean aberta;
 
     @Deprecated
@@ -78,6 +81,14 @@ public class Fatura {
 
     public void setParcelamento(Parcelamento parcelamento) {
         this.parcelamento = parcelamento;
+    }
+
+    public Renegociacao getRenegociacao() {
+        return renegociacao;
+    }
+
+    public void setRenegociacao(Renegociacao renegociacao) {
+        this.renegociacao = renegociacao;
     }
 
     public boolean isAberta() {

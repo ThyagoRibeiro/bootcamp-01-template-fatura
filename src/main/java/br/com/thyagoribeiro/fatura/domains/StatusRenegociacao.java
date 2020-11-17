@@ -1,10 +1,10 @@
 package br.com.thyagoribeiro.fatura.domains;
 
-public enum StatusParcelamento {
+public enum StatusRenegociacao {
 
     APROVADO, NEGADO;
 
-    public static StatusParcelamento getStatus(boolean aprovado) {
+    public static StatusRenegociacao getStatus(boolean aprovado) {
         if(aprovado)
             return APROVADO;
         return NEGADO;
