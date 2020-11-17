@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
 
 // CDD Total - 1
@@ -26,6 +27,9 @@ public class Cartao {
 
     @OneToMany(mappedBy = "cartao")
     private List<Fatura> faturaList; // CDD 1 - Classe Fatura
+
+    @OneToMany(mappedBy = "cartao")
+    private List<SolicitacaoVencimento> solicitacaoVencimentoList = new ArrayList<>();
 
     @Deprecated
     public Cartao() {
@@ -75,5 +79,13 @@ public class Cartao {
 
     public void setDiaVencimento(int diaVencimento) {
         this.diaVencimento = diaVencimento;
+    }
+
+    public List<SolicitacaoVencimento> getSolicitacaoVencimentoList() {
+        return solicitacaoVencimentoList;
+    }
+
+    public void setSolicitacaoVencimentoList(List<SolicitacaoVencimento> solicitacaoVencimentoList) {
+        this.solicitacaoVencimentoList = solicitacaoVencimentoList;
     }
 }
