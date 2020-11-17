@@ -41,7 +41,7 @@ public class ParcelamentoScheduler {
 
         for(Parcelamento parcelamento : parcelamentoList) { // CDD 1 - branch for
 
-            ResponseEntity<ParcelamentoResponse> response = cartoesClient.parcelamentoCartao(parcelamento.getFatura().getCartao().getNumeroCartao(), new ParcelamentoRequest(parcelamento)); // CDD 2 - Classes ParcelamentoResponse e ParcelamentoRequest
+            ResponseEntity<ParcelamentoResponse> response = cartoesClient.notificacaoParcelamento(parcelamento.getFatura().getCartao().getNumeroCartao(), new ParcelamentoRequest(parcelamento)); // CDD 2 - Classes ParcelamentoResponse e ParcelamentoRequest
             parcelamento.setStatusParcelamento(StatusParcelamento.getStatus(response.getStatusCode().is2xxSuccessful())); // CDD 1 - Enum StatusParcelamento
         }
 

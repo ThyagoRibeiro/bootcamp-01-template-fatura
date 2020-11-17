@@ -5,7 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-public class SolicitacaoVencimento {
+public class Vencimento {
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -18,13 +18,13 @@ public class SolicitacaoVencimento {
     private Cartao cartao;
 
     @Enumerated(EnumType.STRING)
-    private StatusSolicitacaoVencimento statusSolicitacaoVencimento;
+    private StatusVencimento statusSolicitacaoVencimento;
 
     @Deprecated
-    public SolicitacaoVencimento() {
+    public Vencimento() {
     }
 
-    public SolicitacaoVencimento(Integer diaVencimento, Cartao cartao) {
+    public Vencimento(Integer diaVencimento, Cartao cartao) {
         this.diaVencimento = diaVencimento;
         this.cartao = cartao;
     }
@@ -53,11 +53,11 @@ public class SolicitacaoVencimento {
         this.cartao = cartao;
     }
 
-    public StatusSolicitacaoVencimento getStatusSolicitacaoVencimento() {
+    public StatusVencimento getStatusSolicitacaoVencimento() {
         return statusSolicitacaoVencimento;
     }
 
-    public void setStatusSolicitacaoVencimento(StatusSolicitacaoVencimento statusSolicitacaoVencimento) {
+    public void setStatusVencimento(StatusVencimento statusSolicitacaoVencimento) {
         this.statusSolicitacaoVencimento = statusSolicitacaoVencimento;
     }
 }

@@ -41,7 +41,7 @@ public class RenegociacaoScheduler {
 
         for(Renegociacao renegociacao : renegociacaoList) { // CDD 1 - branch for
 
-            ResponseEntity<RenegociacaoResponse> response = cartoesClient.renegociacaoCartao(renegociacao.getFatura().getCartao().getNumeroCartao(), new RenegociacaoRequest(renegociacao)); // CDD 2 - Classes RenegociacaoResponse e RenegociacaoRequest
+            ResponseEntity<RenegociacaoResponse> response = cartoesClient.notificacaoRenegociacao(renegociacao.getFatura().getCartao().getNumeroCartao(), new RenegociacaoRequest(renegociacao)); // CDD 2 - Classes RenegociacaoResponse e RenegociacaoRequest
             renegociacao.setStatusRenegociacao(StatusRenegociacao.getStatus(response.getStatusCode().is2xxSuccessful())); // CDD 1 - Enum StatusParcelamento
         }
 

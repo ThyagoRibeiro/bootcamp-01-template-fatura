@@ -29,7 +29,7 @@ public class Cartao {
     private List<Fatura> faturaList; // CDD 1 - Classe Fatura
 
     @OneToMany(mappedBy = "cartao")
-    private List<SolicitacaoVencimento> solicitacaoVencimentoList = new ArrayList<>();
+    private List<Vencimento> solicitacaoVencimentoList = new ArrayList<>();
 
     @Deprecated
     public Cartao() {
@@ -81,11 +81,11 @@ public class Cartao {
         this.diaVencimento = diaVencimento;
     }
 
-    public List<SolicitacaoVencimento> getSolicitacaoVencimentoList() {
+    public List<Vencimento> getSolicitacaoVencimentoList() {
         return solicitacaoVencimentoList;
     }
 
-    public void setSolicitacaoVencimentoList(List<SolicitacaoVencimento> solicitacaoVencimentoList) {
+    public void setSolicitacaoVencimentoList(List<Vencimento> solicitacaoVencimentoList) {
         this.solicitacaoVencimentoList = solicitacaoVencimentoList;
     }
 }

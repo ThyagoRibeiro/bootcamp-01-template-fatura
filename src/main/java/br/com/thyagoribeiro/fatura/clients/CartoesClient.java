@@ -18,11 +18,15 @@ public interface CartoesClient {
     public ResponseEntity<BuscaCartaoResponse> buscarCartao(@PathVariable("id") String numeroCartao); // CDD 1 - Classe BuscaCartaoResponse
 
     @PostMapping(value = "/api/cartoes/{id}/parcelas")
-    public ResponseEntity<ParcelamentoResponse> parcelamentoCartao(@PathVariable("id") String numeroCartao, // CDD 1 - Classe ParcelamentoResponse
-                                                                   @RequestBody ParcelamentoRequest parcelamentoRequest); // CDD 1 - Classe ParcelamentoRequest
+    public ResponseEntity<ParcelamentoResponse> notificacaoParcelamento(@PathVariable("id") String numeroCartao, // CDD 1 - Classe ParcelamentoResponse
+                                                                        @RequestBody ParcelamentoRequest parcelamentoRequest); // CDD 1 - Classe ParcelamentoRequest
 
     @PostMapping(value = "/api/cartoes/{id}/renegociacoes")
-    public ResponseEntity<RenegociacaoResponse> renegociacaoCartao(@PathVariable("id") String numeroCartao, // CDD 1 - Classe ParcelamentoResponse
-                                                                   @RequestBody RenegociacaoRequest renegociacaoRequest); // CDD 1 - Classe RenegociacaoRequest
+    public ResponseEntity<RenegociacaoResponse> notificacaoRenegociacao(@PathVariable("id") String numeroCartao, // CDD 1 - Classe ParcelamentoResponse
+                                                                        @RequestBody RenegociacaoRequest renegociacaoRequest); // CDD 1 - Classe RenegociacaoRequest
+
+    @PostMapping(value = "/api/cartoes/{id}/vencimentos")
+    public ResponseEntity<VencimentoResponse> notificacaoVencimento(@PathVariable("id") String numeroCartao, // CDD 1 - Classe VencimentoResponse
+                                                                    @RequestBody VencimentoRequest vencimentoRequest); // CDD 1 - Classe VencimentoRequest
 
 }

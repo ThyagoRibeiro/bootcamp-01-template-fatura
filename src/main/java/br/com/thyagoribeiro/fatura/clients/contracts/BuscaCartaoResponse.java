@@ -35,11 +35,11 @@ public class BuscaCartaoResponse {
     private RenegociacaoCartaoResponse renegociacaoResponse; // CDD 1 - Classe RenegociacaoCartaoResponse
 
     @JsonProperty("vencimento")
-    private VencimentoResponse vencimentoResponse; // CDD 1 - Classe VencimentoResponse
+    private VencimentoCartaoResponse vencimentoResponse; // CDD 1 - Classe VencimentoCartaoResponse
 
     private String idProposta;
 
-    public BuscaCartaoResponse(String id, LocalDateTime dataEmissao, String titular, List<BloqueioCartaoResponse> bloqueioCartaoResponseList, List<AvisoCartaoResponse> avisoCartaoResponseList, List<CarteiraCartaoResponse> carteiraCartaoResponseList, List<ParcelaResponse> parcelaCartaoResponseList, BigDecimal limite, RenegociacaoCartaoResponse renegociacaoCartaoResponse, VencimentoResponse vencimentoCartaoResponse, String idProposta) {
+    public BuscaCartaoResponse(String id, LocalDateTime dataEmissao, String titular, List<BloqueioCartaoResponse> bloqueioCartaoResponseList, List<AvisoCartaoResponse> avisoCartaoResponseList, List<CarteiraCartaoResponse> carteiraCartaoResponseList, List<ParcelaResponse> parcelaCartaoResponseList, BigDecimal limite, RenegociacaoCartaoResponse renegociacaoCartaoResponse, VencimentoCartaoResponse vencimentoCartaoResponse, String idProposta) {
         this.id = id;
         this.dataEmissao = dataEmissao;
         this.titular = titular;
@@ -125,11 +125,11 @@ public class BuscaCartaoResponse {
         this.renegociacaoResponse = renegociacaoResponse;
     }
 
-    public VencimentoResponse getVencimentoResponse() {
+    public VencimentoCartaoResponse getVencimentoResponse() {
         return vencimentoResponse;
     }
 
-    public void setVencimentoResponse(VencimentoResponse vencimentoResponse) {
+    public void setVencimentoResponse(VencimentoCartaoResponse vencimentoResponse) {
         this.vencimentoResponse = vencimentoResponse;
     }
 

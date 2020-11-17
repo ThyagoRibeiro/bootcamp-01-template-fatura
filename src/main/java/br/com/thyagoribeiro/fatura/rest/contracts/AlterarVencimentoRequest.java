@@ -1,7 +1,7 @@
 package br.com.thyagoribeiro.fatura.rest.contracts;
 
 import br.com.thyagoribeiro.fatura.domains.Cartao;
-import br.com.thyagoribeiro.fatura.domains.SolicitacaoVencimento;
+import br.com.thyagoribeiro.fatura.domains.Vencimento;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.validation.constraints.Max;
@@ -28,7 +28,7 @@ public class AlterarVencimentoRequest {
         this.diaVencimento = diaVencimento;
     }
 
-    public SolicitacaoVencimento toModel(Cartao cartao) {
-        return new SolicitacaoVencimento(diaVencimento,cartao);
+    public Vencimento toModel(Cartao cartao) {
+        return new Vencimento(diaVencimento,cartao);
     }
 }
