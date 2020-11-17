@@ -5,13 +5,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 // CDD - Total: 2
 
@@ -36,10 +40,30 @@ public class HandlerAdvice {
 
     }
 
-    @ExceptionHandler
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<ErroPadronizado> handleConstraintViolationException(ConstraintViolationException constraintViolationException) {
+
+        Collection<String> mensagens = new ArrayList<>();
+        for (ConstraintViolation<?> violation : constraintViolationException.getConstraintViolations()) {
+            mensagens.add(violation.getPropertyPath() + " " + violation.getMessage());
+        }
+
+        ErroPadronizado erroPadronizado = new ErroPadronizado(mensagens);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erroPadronizado);
+    }
+
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public ResponseEntity<ErroPadronizado> handleMissingServletRequestParameterException(MissingServletRequestParameterException missingServletRequestParameterException) {
+
+        Collection<String> mensagens = new ArrayList<>();
+        mensagens.add(missingServletRequestParameterException.getMessage());
+
+        ErroPadronizado erroPadronizado = new ErroPadronizado(mensagens);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erroPadronizado);
+    }
+
+    @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity<ErroPadronizado> handleResponseStatusException(ResponseStatusException responseStatusException) {
-
-
 
         Collection<String> mensagens = new ArrayList<>();
         mensagens.add(responseStatusException.getReason());
